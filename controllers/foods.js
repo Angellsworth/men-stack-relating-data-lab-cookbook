@@ -3,21 +3,13 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user.js')
 
-// GET /users/:userId/foods - Show all food items in a user's pantry
+// GET /users/:userId/foods - Index Route: Show all food items in a user's pantry
 router.get('/', async (req, res) => {
     try {
-        // Find user in database
-        const user = await User.findById(req.session.user._id);
+        const user = await User.findById(req.session.user._id);// Find user in database
+        if (!user) return res.redirect('/'); // Redirect home if user not found
 
-        if (!user) {
-            console.log("No user found");
-            return res.redirect('/'); // Redirect home if user not found
-        }
-
-        console.log("Pantry items:", user.pantry); // Log pantry items for debugging
-
-        // Send pantry items to the template
-        res.render('foods/index.ejs', { user: req.session.user, pantry: user.pantry });
+        res.render('foods/index.ejs', { user: req.session.user, pantry: user.pantry });// Send pantry items to the template
     } catch (err) {
         console.error("Error fetching pantry items:", err);
         res.redirect('/'); // Redirect home if error occurs
