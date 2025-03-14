@@ -17,14 +17,16 @@
 
         <h2>Pantry Items:</h2>
         <% if (pantry && pantry.length > 0) { %>  <!-- If pantry has items, show them -->
-            <ul>
+            <ul class="pantry-list">
                 <% pantry.forEach(food => { %>
                     <li>
-                        <strong><%= food.name %></strong> - Quantity: <%= food.quantity %>
-                        <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
-                            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>
-                            <button type="submit">Delete</button>
-                        </form>
+                        <span><strong><%= food.name %></strong> - Quantity: <%= food.quantity %></span>
+                        <div class="button-group">
+                            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit" class="editbtn btn">Edit</a>
+                            <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
                     </li>
                 <% }) %>
             </ul>
