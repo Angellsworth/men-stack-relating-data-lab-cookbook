@@ -1,6 +1,6 @@
 # 🥫 Shelf Help - The Ultimate Pantry Tracker
 
-![Shelf Help](public/images/pantry-screenshot.jpg)
+![Shelf Help](/public/images/pantry-screenshot.png)
 
 ## 📌 Overview
 **Shelf Help** is a pantry-tracking app designed to help you keep an eye on what’s in your pantry, making it easier to plan meals, avoid food waste, and stay organized. Built with **MongoDB, Express, Node.js, and EJS**, this project solidifies CRUD operations—one of the most foundational concepts in full-stack development.
