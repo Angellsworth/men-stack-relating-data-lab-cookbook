@@ -4,29 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- dynamically rendered little ternary -->
     <title><%= user ? user.username + "'s Pantry" : "My Pantry" %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %> <!-- Navbar for navigation -->
-<h1>Welcome to My Pantry!</h1>
 
-<% if (user) { %>  <!-- Check if a user is signed in -->
-    <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
+    <h1>Welcome to My Pantry!</h1>
 
-    <h2>Pantry Items:</h2>
-    <% if (pantry && pantry.length > 0) { %>  <!-- If pantry has items, show them -->
-        <ul>
-            <% pantry.forEach(food => { %>
-                <li><%= food.name %></li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>Your pantry is empty! Add some food.</p>
+    <% if (user) { %>  <!-- Check if a user is signed in -->
+        <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
+
+        <h2>Pantry Items:</h2>
+        <% if (pantry && pantry.length > 0) { %>  <!-- If pantry has items, show them -->
+            <ul>
+                <% pantry.forEach(food => { %>
+                    <li>
+                        <strong><%= food.name %></strong> - Quantity: <%= food.quantity %>
+                        <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
+                            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>Your pantry is empty! Add some food.</p>
+        <% } %>
+
+    <% } else { %>  <!-- If no user is signed in, show login message -->
+        <p><a href="/auth/sign-in">Sign in</a> to view your pantry.</p>
     <% } %>
-
-<% } else { %>  <!-- If no user is signed in, show login message -->
-    <p><a href="/auth/sign-in">Sign in</a> to view your pantry.</p>
-<% } %>
 </body>
 </html>
