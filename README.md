@@ -44,7 +44,6 @@ This project is structured to reinforce **MERN stack fundamentals**, focusing on
 | **Delete** | DELETE | `/users/:userId/foods/:itemId` | Remove item from pantry |
 
 - This setup mirrors CRUD **functionality found in all web apps**, including:  
-  - Managing blog posts  
   - Updating user profiles  
   - Editing products in e-commerce  
 
