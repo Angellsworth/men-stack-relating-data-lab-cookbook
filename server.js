@@ -12,6 +12,7 @@ const foodsController = require('./controllers/foods.js')
 const isUserSignedIn = require('./middleware/isSignedIn.js')
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const isSignedIn = require('./middleware/isSignedIn.js');
+const communityController = require('./controllers/community.js')
 
 
 const port = process.env.PORT ? process.env.PORT : '3000';
@@ -51,6 +52,7 @@ app.use(passUserToView);//Runs first so every template has access to user
 app.use('/auth', authController);//authentication routes
 app.use(isSignedIn);//Runs before protected routes that require authentication
 app.use('/users/:userId/foods', foodsController);//pantry routes protected
+app.use('/community', communityController)
 
 app.listen(port, () => {
   console.log(`Angela! You are whipping it up on port ${port}!`);
