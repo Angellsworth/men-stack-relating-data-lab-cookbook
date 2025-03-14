@@ -1,55 +1,37 @@
-# 🥫 Shelf Help: The Pantry Organizer  
+# 🥫 Shelf Help - The Ultimate Pantry Tracker
 
-## **Overview**  
-**Shelf Help** is a simple yet **essential CRUD (Create, Read, Update, Delete) app** designed to help track pantry items. It lays the foundation for understanding how **CRUD operations power most websites**, from managing user accounts to handling content updates.  
+![Shelf Help](public/images/pantry-screenshot.jpg)
 
-This project is structured to reinforce **MERN stack fundamentals**, focusing on **Express.js, MongoDB, and EJS for templating**. Every interaction with the pantry mirrors the real-world logic of adding, modifying, and organizing data—just like most **content-driven websites and applications**.
+## 📌 Overview
+**Shelf Help** is a pantry-tracking app designed to help you keep an eye on what’s in your pantry, making it easier to plan meals, avoid food waste, and stay organized. Built with **MongoDB, Express, Node.js, and EJS**, this project solidifies CRUD operations—one of the most foundational concepts in full-stack development.
 
----
-
-## **📸 Screenshot**  
-![Screenshot of Shelf Help](public/images/pantry-screenshot.png)  
-
----
-
-## **🛠 Technologies Used**  
-- **Back End**: Node.js, Express, MongoDB, Mongoose  
-- **Front End**: HTML, CSS, EJS  
-- **Authentication**: Express Sessions  
-- **Middleware**: Method-Override for RESTful routes  
-- **Version Control**: Git & GitHub  
+## 🎯 User Stories
+- **As a user**, I want to sign up and sign in so I can manage my pantry.
+- **As a user**, I want to add food items to my pantry with a name and quantity.
+- **As a user**, I want to edit pantry items if I need to update the quantity or name.
+- **As a user**, I want to delete pantry items I no longer have.
+- **As a user**, I want to see a list of all my pantry items displayed in an easy-to-read format.
+- **As a user**, I want to explore a **Community Page** where I can see other users and what’s in their pantry for inspiration.
+- **As a user**, I want to view another user's pantry when I click on their name.
 
 ---
 
-## **📖 How the App Works (Step by Step Setup & Structure)**  
+## 🏗️ How It Works
 
-### **1️⃣ Home Page – Welcome & Authentication**  
-- The homepage is designed to **introduce users to the pantry system**.  
-- If a user is **not logged in**, they are prompted to **sign up or log in**.  
-- If a user is **logged in**, they see their pantry and a **sign-out option**.  
-- This interaction teaches **session-based authentication** and conditional rendering.
+This app follows the **CRUD (Create, Read, Update, Delete)** structure:
 
-### **2️⃣ Pantry – CRUD Operations**  
-- Once authenticated, users can **view, add, edit, and delete** pantry items.  
-- Each pantry item is stored in **MongoDB**, using Mongoose to **structure the data**.  
-- The pantry follows **a classic RESTful route structure**:
-
-| Action  | HTTP Method | Route | Description |
-|---------|------------|-------|-------------|
-| **Read**   | GET  | `/users/:userId/foods` | View all pantry items |
-| **Create** | GET  | `/users/:userId/foods/new` | Show "Add New Item" form |
-| **Create** | POST | `/users/:userId/foods` | Add a new item to the pantry |
-| **Update** | GET  | `/users/:userId/foods/:itemId/edit` | Show "Edit Item" form |
-| **Update** | PUT  | `/users/:userId/foods/:itemId` | Update item details |
-| **Delete** | DELETE | `/users/:userId/foods/:itemId` | Remove item from pantry |
-
-- This setup mirrors CRUD **functionality found in all web apps**, including:  
-  - Updating user profiles  
-  - Editing products in e-commerce  
-
-### **3️⃣ Community – Viewing Other Users' Pantries**  
-- Users can **explore pantries of other users** to get inspiration.  
-- This involves **querying MongoDB** for all users and rendering their data.  
-- It demonstrates **data relationships** in a multi-user application.
+| Action       | HTTP Method | Route                     | Description                        |
+|-------------|------------|---------------------------|------------------------------------|
+| **Create**  | `POST`     | `/users/:userId/foods`    | Add a new pantry item             |
+| **Read**    | `GET`      | `/users/:userId/foods`    | View all pantry items             |
+| **Update**  | `PUT`      | `/users/:userId/foods/:id`| Edit a pantry item                |
+| **Delete**  | `DELETE`   | `/users/:userId/foods/:id`| Remove an item from the pantry    |
 
 ---
+
+## 🚀 Setup Instructions
+
+### **1️⃣ Clone the Repo**
+```bash
+git clone https://github.com/your-username/pantry-app.git
+cd pantry-app
